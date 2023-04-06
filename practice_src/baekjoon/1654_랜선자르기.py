@@ -6,11 +6,11 @@ for _ in range(k):
 # 갖고있는 k개의 랜선들 중 가장 큰 랜선 길이
 # 가장 작은 랜선 길이로 하지 않는 이유는, 모든 k개의 랜선을 다 자를 필요가 없기 때문
 # ex) lans = [100,1,1] 이고 n=2인 경우, 100을 두 개로만 자르면 됨
-search_range = max(lans)
+largest = max(lans)
 
-# 1 ~ search_range 중 n개로 자를 수 있는 최대 길이 구해야 by 이분탐색
+# 1 ~ largest 중 n개로 자를 수 있는 최대 길이 구해야 by 이분탐색
 lt = 1
-rt = search_range
+rt = largest
 res = 0
 while lt<=rt:
     mid = (lt+rt)//2
@@ -24,4 +24,4 @@ while lt<=rt:
         lt = mid + 1
 
 print(res) # 결국은 최적의 해가 출력될 것!
-print(lt, rt, mid)
+# print(lt, rt, mid)
