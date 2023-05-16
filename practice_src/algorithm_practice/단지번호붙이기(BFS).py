@@ -30,4 +30,6 @@ for i in range(n):
 
 ans.sort()
 print(len(ans))
-print(*ans)
+for a in ans:
+    print(a)
+
