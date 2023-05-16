@@ -4,8 +4,8 @@ dx=[-1, 0, 1, 0]
 dy=[0, 1, 0, -1]
 
 def dfs(x,y):   # 호출 후 0으로 체크하고 집 셈 -> 체크하고 집세고 호출해도 됨
-    global cnt
-    mapp[x][y] = 0
+    global cnt  # immutable 자료형(기본 자료형)
+    mapp[x][y] = 0 #mutable 자료형(참조 변수)
     cnt+=1
     for i in range(4):
         nx = x+dx[i]
