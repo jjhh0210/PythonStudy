@@ -7,10 +7,10 @@ res = 0
 for i in range(2,n+1):
     max = 0
     for j in range(i-1,0,-1):
-        if arr[j] < arr[i] and dy[j]>max:
+        if arr[j] < arr[i] and dy[j]>max:   # 나보다 작은 값 중 dy max 구하기
             max = dy[j]
     dy[i] = max+1
-    #최대값
+    # 최대증가수열의 길이
     if dy[i]>res:
         res = dy[i]
 
