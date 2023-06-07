@@ -19,10 +19,12 @@ arr=[list(map(int, input().split())) for _ in range(n)]
 dy=[[0]*n for _ in range(n)]
 
 def DFS(x,y):
+    if dy[x][y] >0:
+        return dy[x][y] # 이미 구한값이라면 그 값을 써라!
+
     # 종료지점 = 출발지
     if x==0 and y==0:
         return arr[0][0]
-
     else:
         if y==0:
             # 위로만 올라가야 함
