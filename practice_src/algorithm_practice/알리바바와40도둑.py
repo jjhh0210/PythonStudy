@@ -12,8 +12,7 @@
 #
 # print(dy[n-1][n-1])
 
-# top-down
-
+# # top-down
 n=int(input())
 arr=[list(map(int, input().split())) for _ in range(n)]
 dy=[[0]*n for _ in range(n)]
