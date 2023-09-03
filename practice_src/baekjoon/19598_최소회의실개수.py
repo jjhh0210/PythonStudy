@@ -15,7 +15,7 @@ for s,e in lst:
     if hq and hq[0] <= s : #  첫번째 원소가 아니며, 가장 빨리 끝나는 회의 이후 시작할 수 있는 회의이면 pop후 push
         heapq.heappop(hq)
     heapq.heappush(hq,e)    # pop안하고 push -> 무조건 새로운 회의실 생성!
-    print(hq)
+    # print(hq)
 
 print(len(hq))
 
