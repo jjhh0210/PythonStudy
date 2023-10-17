@@ -1,7 +1,5 @@
 import sys
 input = sys.stdin.readline
-
-
 def solution(n,seq):
     k = 0   # 1~n까지의 자연수 (0으로 해야 첫번째 숫자 1이 될 때까지 while 루프 적어도 한번 실행됨)
     stack = []
