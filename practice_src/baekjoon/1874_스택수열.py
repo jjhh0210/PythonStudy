@@ -1,4 +1,5 @@
-# 1~n 차례대로 push해야됨
+import sys
+input = sys.stdin.readline
 
 def solution(n,arr):
     stack = []
