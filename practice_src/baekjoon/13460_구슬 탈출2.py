@@ -1,22 +1,10 @@
+def select_first():
 
-def move(ci,cj,di,dj):
+def move_candy(ci,cj,di,dj):
 
     return ci,cj
 def dfs(ri,rj,bi,bj,cnt):
-    # 두개 위치 다르고, R이 exit인 경우
-    global N,M,ans
-    if maps[ri][rj]=='O':
-        ans = cnt
-        return
-    # 탐색 시작
-    for di, dj in dirs:
-        # 1. 사탕 옮기기
-        # 1-1) 탐색할 방향 기준 앞서있는 사탕 먼저 옮기기
 
-
-
-        # 2. 둘다 exit이면 탐색X
-        # 3. 다음 방향 호출
 
 
 
@@ -37,7 +25,7 @@ for i in range(1,N):
         if maps[i][j] == 'B':
             bi,bj = i,j
 
-dfs(ri,rj,bi,bj, 0)
+dfs(ri,rj,bi,bj, 0) # R위치, B위치, 이때까지 몇번 기울였는지
 
 '''
 코드트리- 2개의 사탕 / 2015년 하반기 삼성 그룹 오후 2번
