@@ -42,5 +42,19 @@
 <output>
 m년 이후 남아있는 리브로수의 총 높이의 합
 '''
+from collections import deque
+import sys
+input = sys.stdin.readline
+# 0 1 2 3 4 5
+n=6 # 개수
+i=2 # 현재 인덱스
+k=5 # 몇번이동할건지
 
 
+print((i+k)%n)  # i에서부터 +k 이동
+
+print((i-k)%n)  # i에서부터 -k 이동
+
+print(k%n)  # 0에서부터 +k이동
+
+print(-k%n) # 0에서부터 -k이동
