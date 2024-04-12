@@ -76,7 +76,7 @@ for _ in range(M):
     ### 1. 루돌프 이동
     # 1) 돌진할 산타 선정
     real_st = None      # 돌진할 산타 (최소 거리)
-    min_dist = None     # 해당 산타와의 현재 거리
+    min_dist = 2*N**2     # 해당 산타와의 현재 거리 (0,0 -> N+1,N+1 끝끝으로 초기화)
     for st in range(1,P+1):
         sr, sc = santas['pos'][st]
         dist = cal_dist(sr, sc, dolf_r, dolf_c)
@@ -84,8 +84,14 @@ for _ in range(M):
             if real_st is None or (min_dist,sr,sc) > (dist,santas['pos'][real_st][0], santas['pos'][real_st][1]):
                 real_st = st
                 min_dist = dist
-    # 2) 해당 산타와 가장 가까워지는 방향 정하기
+    # 2) 해당 산타와 가장 가까워지는 방향 정하기 (8방이니까 이렇게 가능!!)
     sr,sc = santas['pos'][real_st]
+    # ddr = ddc = 0   # 루돌프의 이동방향(안움직이는 0으로 각각 초기화)
+    # if dolf_r > sr: ddr= -1     # 산타가 더 위에 있는 경우, 루돌프 위로 이동
+    # elif dolf_r < sr: ddr=1     # 산타가 더 밑에 있는 경우, 루돌프 밑으로 이동
+    #
+    # if dolf_c < sc: ddc=1       # 루 --> 산 경우, 루돌프 오른쪽 이동
+    # elif dolf_c > sc: ddc=-1    # 산 --> 루 경우, 루돌프 왼쪽 이동
     min_d = 0
     for d in range(8):
         dolf_nr, dolf_nc = dolf_r+dr[d], dolf_c+dc[d]
@@ -111,11 +117,11 @@ for _ in range(M):
         min_d = 0
         for d in [0,2,4,6]: # 상 우 하 좌
             nsr, nsc = sr+dr[d], sc+dc[d]
-            if 1 <= nsr <= N and 1 <= nsc <= N and maps[nsr][nsc]<=0:    # OOR 아니고, 다른 산타 있지 않고
-                dist = cal_dist(dolf_r, dolf_c, nsr, nsc)
-                if dist < min_dist:
-                    min_dist = dist
-                    min_d = d
+            dist = cal_dist(dolf_r, dolf_c, nsr, nsc)
+            # OOR 아니고, 다른 산타 있지 않고, 더 짧은 거리인 경우
+            if 1 <= nsr <= N and 1 <= nsc <= N and maps[nsr][nsc]<=0 and min_dist>dist:
+                min_dist = dist
+                min_d = d
         # min_dist가 갱신이 됐을 경우에만 이동 (더 가까워졌을 경우에만!)
         if min_dist < cal_dist(sr,sc,dolf_r,dolf_c):
             maps[sr][sc] = 0
@@ -197,3 +203,4 @@ dc = [0,1,1,1,0,-1,-1,-1]
      그 옆에 산타가 있다면 연쇄적으로 1칸씩 밀려나는 것을 반복하게 됩니다.
      게임판 밖으로 밀려나오게 된 산타의 경우 게임에서 탈락됩니다.
 '''
+a = [1]
