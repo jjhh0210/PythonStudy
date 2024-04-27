@@ -29,8 +29,11 @@ for i in range(2, N+1):
         elif 1<=j<=8:
             dp[i][j] = dp[i-1][j-1]+ dp[i-1][j+1]
         else:
-            dp[i][j] = dp[i-1][8]
 
+            dp[i][j] = dp[i-1][8]
+for i in range(1,N+1):
+    print("%d 자리수:" %i,end="")
+    print(dp[i][:])
 print(sum(dp[N])%1000000000)
 
 
