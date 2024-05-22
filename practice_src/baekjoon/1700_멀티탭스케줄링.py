@@ -34,12 +34,16 @@ for i in range(k):
         tab.append(item)
         cnt+=1
     else:            # 다른 것 뽑고 꽂아야 하는 경우
-        # 뽑을 것 탐색 -> 우선순위: 가장 멀리 떨어져 있는 것 -> 가장 적은 것
+        # 뽑을 것 탐색 -> 우선순위: 1) 가장 멀리 떨어져 있음(오래 안씀) -> 2) 가장 적은 것
         mx = tab[0]
+        # for c in tab:
+        #     clen, cpos, mxlen, mxpos = len(info[c]), info[c][0], len(info[mx]), info[mx][0]
+        #     if (-cpos, clen) < (-mxpos, mxlen): # 첫번째가 같으면 두번째 비교 (갱신 조건: 1번이 더 커야함. 1번이 같으면 2번이 더 작아야함 의미)
+        #         mx = c
+
+        ## 다시보니 1번만 고려해도 충분했음!!(최대한 오래동안 제거된 상태로 유지할 수 있기 때문)
         for c in tab:
-            clen, cpos, mxlen, mxpos = len(info[c]), info[c][0], len(info[mx]), info[mx][0]
-            if (-cpos, clen) < (-mxpos, mxlen): # 첫번째가 같으면 두번째 비교 (갱신 조건: 1번이 더 커야함. 1번이 같으면 2번이 더 작아야함 의미)
-                mx = c
+            mx = c if info[c][0] > info[mx][0] else mx
         tab.remove(mx)
         tab.append(item)
         ans+=1
