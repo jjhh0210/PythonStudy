@@ -13,12 +13,10 @@ ans = float("inf")
 
 for r in range(n):
     summ += a[r]
-    if summ>=s:
-        ans = min(r-l+1,ans)
-    # l이 움직이는 경우
+    # l이 움직이는 경우=> s보다 클때!!
     while l<n and summ>=s:
-        summ-=a[l]
         ans = min(r-l+1,ans)
+        summ-=a[l]
         l+=1
 if ans == float("inf"):
     print("0")
